@@ -42,10 +42,10 @@ class AuthController extends Controller
     ]);
 
     if (Auth::attempt($credentials)) {
+        /** @var \App\Models\User $user */ // add iss pois o vs code da etec nao reconhece
         $user = Auth::user();
 
-        // 1. GERA O TOKEN (O "CRACHÁ VIP")
-        // O nome 'auth_token' pode ser qualquer um
+        
         $token = $user->createToken('auth_token')->plainTextToken;
         
         return response()->json([
