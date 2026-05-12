@@ -21,6 +21,7 @@ return new class extends Migration
             // Adicione os campos assim, direto:
             $table->string('altura')->nullable();
             $table->string('peso')->nullable();
+             $table->string('foto')->nullable();
             
             $table->rememberToken();
             $table->timestamps();
