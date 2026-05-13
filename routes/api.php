@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HydrationController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,3 +25,8 @@ Route::middleware('auth:sanctum')->get('/perfil', function (Request $request) {
 Route::post('/cadastro', [AuthController::class, 'register']);
 
 Route::post('/login', [AuthController::class, 'login']);
+
+
+Route::post('/hidratacao', [HydrationController::class, 'calcular']);
+
+Route::middleware('auth:sanctum')->get('/hidratacao/perfil', [HydrationController::class, 'calcularPerfil']);
