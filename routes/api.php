@@ -29,7 +29,7 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user();
     });
 
-
+    Route::put('/perfil/editar', [AuthController::class, 'update']);
     Route::get('/imc', [Imc::class, 'index']); 
     
    
