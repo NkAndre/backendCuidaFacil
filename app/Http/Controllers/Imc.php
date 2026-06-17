@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+
 
 class Imc extends Controller
 {
@@ -10,7 +11,39 @@ class Imc extends Controller
      * Display a listing of the resource.
      */
     public function index()
+
+
     {
+
+        $user = Auth::user(); 
+        if (!$user->peso || !$user->altura) {
+            return response()->json([
+                'peso' => null,
+                'altura' => null,
+                'imc' => '0,0',
+                'classificacao_imc' => 'Dados não cadastrados'
+            ], 200);
+        }
+
+        $alturaMetros = $user->altura;
+       $imc = $user->peso / ($alturaMetros * $alturaMetros);
+
+        if ($imc < 18.5) {
+            $classificacaoImc = 'Abaixo do peso';
+        } elseif ($imc < 25) {
+            $classificacaoImc = 'Peso normal';
+        } elseif ($imc < 30) {
+            $classificacaoImc = 'Sobrepeso';
+        } else {
+            $classificacaoImc = 'Obesidade';
+        }
+
+        return response()->json([
+            'peso' => $user->peso,
+            'altura' => $user->altura,
+            'imc' => round($imc, 1),
+            'classificacao_imc' => $classificacaoImc
+        ], 200);
         //
     }
 

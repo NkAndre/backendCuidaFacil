@@ -5,28 +5,34 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HydrationController;
+use App\Http\Controllers\Imc;
 
 /*
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
 */
-
-Route::middleware('auth:sanctum')->get('/perfil', function (Request $request) {
-    return $request->user();
-});
 
 
 Route::post('/cadastro', [AuthController::class, 'register']);
-
 Route::post('/login', [AuthController::class, 'login']);
 
-
 Route::post('/hidratacao', [HydrationController::class, 'calcular']);
+Route::post('/imc', [Imc::class, 'store']); 
 
-Route::middleware('auth:sanctum')->get('/hidratacao/perfil', [HydrationController::class, 'calcularPerfil']);
+
+
+Route::middleware('auth:sanctum')->group(function () {
+    
+    
+    Route::get('/perfil', function (Request $request) {
+        return $request->user();
+    });
+
+
+    Route::get('/imc', [Imc::class, 'index']); 
+    
+   
+    Route::get('/hidratacao/perfil', [HydrationController::class, 'calcularPerfil']);
+    
+});
