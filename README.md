@@ -82,10 +82,10 @@ http://127.0.0.1:8000
 
 O aplicativo mobile está disponível em:
 
-**Frontend:** https://github.com/NkAndre/CuidaFacil
+**Frontend:** https://github.com/NkAndre/cuida_facil
 
 ## 👨‍💻 Autor
 
-**André Silva**
+**André Santos**
 
 - GitHub: https://github.com/NkAndre
