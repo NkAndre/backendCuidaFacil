@@ -7,3 +7,11 @@ API REST desenvolvida em **Laravel** para o aplicativo **Cuida Fácil**, respons
 O Backend Cuida Fácil fornece todos os serviços necessários para o funcionamento do aplicativo mobile, permitindo o armazenamento e gerenciamento seguro das informações dos usuários.
 
 A API foi desenvolvida seguindo a arquitetura MVC do Laravel e utiliza banco de dados relacional para persistência das informações.
+
+
+## 🛠️ Tecnologias
+
+- Laravel
+- PHP
+- MySQL
+- Composer
